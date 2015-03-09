@@ -1,0 +1,47 @@
+.ng-invalid.ng-dirty{
+    border-color: red;
+}
+.ng-valid.ng-dirty{
+    border-color: green;
+}
+#preview{
+    width: 600px;
+    margin: 0 0 16px 30px;
+    padding: -5px 5px 20px 5px;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+}
+#post-body{
+    width: 700px;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+}
+#post-body-inner{
+    padding: 20px;
+}
+.btn2-comment{
+    float: right;
+    margin: 10px;
+}
+.btn-comment{
+    float: right;
+    margin: -5px 30px 0 0;
+}
+#form{
+    margin-left: 105px;
+}
+.text-area{
+    width: 600px;
+}
+.block-text{
+    font-size: 14px
+}
+#heading{
+    padding-left: 20px;
+}
+#sub-heading{
+    margin: 0 20px 0 40px;
+}
+.block-text-body{
+    width: 650px;
+}

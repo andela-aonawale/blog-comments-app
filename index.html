@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="CommentsApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="script/angular.js"></script>
+    <script src="script/script.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+</head>
+<body>
+<div class="jumbotron">
+    <h1 id="heading">Blog Comments</h1>
+    <p id="sub-heading">Lorem ipsum dolor sit amet, debet senserit quaerendum ei est, ius etiam ludus iuvaret no,
+        dico tollit mollis ei mel. Quas lorem euismod eu pri, nostrud numquam deserunt sea te</p>
+</div>
+<div id="body" class="container">
+        <div id="post-body">
+            <div id="post-body-inner">
+                <p>
+                    Lorem ipsum dolor sit amet, debet senserit quaerendum ei est, ius etiam ludus iuvaret no,
+                    dico tollit mollis ei mel. Quas lorem euismod eu pri, nostrud numquam deserunt sea te,
+                    veri altera id sed. Ut idque libris aperiam cum, stet erroribus ne nec. Sit ut ridens
+                    mediocritatem, corrumpit incorrupte per an.
+                </p>
+                <p>Eius dissentiunt te quo, vel ea soleat graeci repudiandae, dicam fuisset per id. Ne mutat
+                    eirmod pro, ut vel errem suscipit mnesarchum. Ne errem tollit diceret sea, eam te agam justo
+                    velit. Mea ne ullum invidunt appellantur. Mea at impetus consectetuer, eius mucius quaerendum
+                    te per, vim ne fugit veniam.
+                </p>
+                <p>Nam et dico invenire, amet movet vituperatoribus quo id, nominati quaestio repudiandae mea cu.
+                    Ut abhorreant ullamcorper usu, sit labore splendide ut, nec maluisset consulatu expetendis no.
+                    Cu has aeque ignota vivendo, suscipit neglegentur at usu. His eros populo ea, ad mei mandamus
+                    reformidans conclusionemque. Quidam pertinacia suscipiantur usu et, id eam discere intellegebat.
+                    Ex diam tation cum, mazim option argumentum cu ius.
+                </p>
+            </div>
+        </div>
+
+    <h2>Comments</h2>
+    <div ng-controller="CommentsController as commentCtrl">
+
+    <div class="container">
+        <blockquote ng-repeat="coms in commentCtrl.comments" class="block-text-body">
+            <p>{{coms.text}}</p>
+            <p>By: <span class="block-text">{{coms.name}}</span></p>
+            <p>Email: <span class="block-text">{{coms.email}}</span></p>
+            <footer>On {{coms.date}}</footer>
+
+            <div class="text-area">
+            <form ng-show="coms.hide" class="text-area" novalidate>
+                    <textarea ng-model="coms.text" class="form-control" rows="5"></textarea>
+                    <div class="btn2-comment">
+                        <button type="submit" class="btn btn-success btn-sm" ng-click="commentCtrl.saveComment(coms)">Save</button>
+                        <button type="button" class="btn btn-danger btn-sm" ng-click="commentCtrl.cancelEdit(coms)">Cancel</button>
+                    </div>
+            </form>
+            </div>
+
+            <div class="btn-comment" ng-show="coms.show">
+                <button class="btn btn-success btn-sm" ng-click="commentCtrl.editComment(coms)">Edit</button>
+                <button class="btn btn-danger btn-sm" ng-click="commentCtrl.deleteComment(coms)">Delete</button>
+            </div>
+        </blockquote>
+    </div>
+
+    <div class="container" id="preview" ng-show="commentForm.$dirty">
+            <h3>Preview</h3>
+            <p>{{commentCtrl.comment.text}}</p>
+            <p><strong>By: </strong>{{commentCtrl.comment.name}}</p>
+            <p><strong>Email: </strong>{{commentCtrl.comment.email}}</p>
+    </div>
+
+    <form name="commentForm" ng-submit="commentForm.$valid && commentCtrl.addComment()"
+          class="form-horizontal text-area" role="form" novalidate>
+    <div class="form-group" id="form">
+        <textarea ng-model="commentCtrl.comment.text" placeholder="Please leave a comment..."
+                  class="form-control" rows="7" id="comment" required></textarea>
+    </div>
+    <div class="form-group">
+            <label class="control-label col-sm-2">Name:</label>
+            <div class="col-sm-10">
+                <input type="author" ng-model="commentCtrl.comment.name" class="form-control" placeholder="Enter your name.." required>
+            </div>
+    </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Email:</label>
+            <div class="col-sm-10">
+                <input type="email" ng-model="commentCtrl.comment.email" class="form-control" placeholder="ahmed.onawale@andela.co" required>
+            </div>
+        </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+    </form>
+    </div>
+    </div>
+</body>
+</html>
