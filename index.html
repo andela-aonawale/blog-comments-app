@@ -39,28 +39,27 @@
     <h2>Comments</h2>
     <div ng-controller="CommentsController as commentCtrl">
         <div class="container" >
-            <blockquote ng-repeat="coms in commentCtrl.comments" class="block-text-body">
+            <blockquote ng-repeat="coms in commentCtrl.comments" class="block-text-body" ng-show="coms.sh">
                 <p>{{coms.text}}</p>
                 <p>By: <span class="block-text">{{coms.name}}</span></p>
                 <p>Email: <span class="block-text">{{coms.email}}</span></p>
                 <footer>On {{coms.date | date: 'medium'}}</footer>
+                <div class="text-area">
+                    <form ng-show="coms.hide" class="text-area" novalidate>
+                        <textarea ng-model="coms.text" class="form-control" rows="5"></textarea>
+                        <div class="btnsave">
+                            <a href=""><span class="glyphicon glyphicon-ok" ng-click="commentCtrl.saveComment(coms)"></span></a>
+                        </div>
+                    </form>
+                </div>
                 <div class="btn-comment" ng-show="coms.show">
                     <a href=""><span class="glyphicon glyphicon-thumbs-down" ng-click="commentCtrl.remVote(coms)"></span></a>
                     <span class="badge">{{coms.downvote}}</span>
                     <a href=""><span class="glyphicon glyphicon-thumbs-up" ng-click="commentCtrl.addVote(coms)"></span></a>
                     <span class="badge">{{coms.upvote}}</span>
                     <a href=""><span class="glyphicon glyphicon-pencil" ng-click="commentCtrl.editComment(coms)"></span></a>
-                    <a href=""><span id="delbtn" class="glyphicon glyphicon-trash" ng-click="commentCtrl.deleteComment()"></span></a>
+                    <a href=""><span id="delbtn" class="glyphicon glyphicon-trash" ng-click="commentCtrl.deleteComment(coms)"></span></a>
                 </div>
-                <div class="text-area">
-                    <form ng-show="coms.hide" class="text-area" novalidate>
-                    <textarea ng-model="coms.text" class="form-control" rows="5"></textarea>
-                    <div class="btnsave">
-                        <a href=""><span class="glyphicon glyphicon-ok" ng-click="commentCtrl.saveComment(coms)"></span></a>
-                    </div>
-                    </form>
-                </div>
-
             </blockquote>
         </div>
 
