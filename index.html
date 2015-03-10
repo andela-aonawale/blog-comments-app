@@ -3,10 +3,10 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="script/angular.js"></script>
-    <script src="script/script.js"></script>
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="vendor/css/stylesheet.css"/>
 </head>
 <body>
 <div class="jumbotron">
@@ -15,8 +15,8 @@
         dico tollit mollis ei mel. Quas lorem euismod eu pri, nostrud numquam deserunt sea te</p>
 </div>
 <div id="body" class="container">
-        <div id="post-body">
-            <div id="post-body-inner">
+    <div id="post-body">
+        <div id="post-body-inner">
                 <p>
                     Lorem ipsum dolor sit amet, debet senserit quaerendum ei est, ius etiam ludus iuvaret no,
                     dico tollit mollis ei mel. Quas lorem euismod eu pri, nostrud numquam deserunt sea te,
@@ -35,68 +35,65 @@
                     Ex diam tation cum, mazim option argumentum cu ius.
                 </p>
             </div>
-        </div>
-
+    </div>
     <h2>Comments</h2>
     <div ng-controller="CommentsController as commentCtrl">
-
-    <div class="container">
-        <blockquote ng-repeat="coms in commentCtrl.comments" class="block-text-body">
-            <p>{{coms.text}}</p>
-            <p>By: <span class="block-text">{{coms.name}}</span></p>
-            <p>Email: <span class="block-text">{{coms.email}}</span></p>
-            <footer>On {{coms.date}}</footer>
-
-            <div class="text-area">
-            <form ng-show="coms.hide" class="text-area" novalidate>
+        <div class="container" >
+            <blockquote ng-repeat="coms in commentCtrl.comments" class="block-text-body">
+                <p>{{coms.text}}</p>
+                <p>By: <span class="block-text">{{coms.name}}</span></p>
+                <p>Email: <span class="block-text">{{coms.email}}</span></p>
+                <footer>On {{coms.date | date: 'medium'}}</footer>
+                <div class="btn-comment" ng-show="coms.show">
+                    <a href=""><span class="glyphicon glyphicon-thumbs-down" ng-click="commentCtrl.remVote(coms)"></span></a>
+                    <span class="badge">{{coms.downvote}}</span>
+                    <a href=""><span class="glyphicon glyphicon-thumbs-up" ng-click="commentCtrl.addVote(coms)"></span></a>
+                    <span class="badge">{{coms.upvote}}</span>
+                    <a href=""><span class="glyphicon glyphicon-pencil" ng-click="commentCtrl.editComment(coms)"></span></a>
+                    <a href=""><span id="delbtn" class="glyphicon glyphicon-trash" ng-click="commentCtrl.deleteComment()"></span></a>
+                </div>
+                <div class="text-area">
+                    <form ng-show="coms.hide" class="text-area" novalidate>
                     <textarea ng-model="coms.text" class="form-control" rows="5"></textarea>
-                    <div class="btn2-comment">
-                        <button type="submit" class="btn btn-success btn-sm" ng-click="commentCtrl.saveComment(coms)">Save</button>
-                        <button type="button" class="btn btn-danger btn-sm" ng-click="commentCtrl.cancelEdit(coms)">Cancel</button>
+                    <div class="btnsave">
+                        <a href=""><span class="glyphicon glyphicon-ok" ng-click="commentCtrl.saveComment(coms)"></span></a>
                     </div>
-            </form>
-            </div>
+                    </form>
+                </div>
 
-            <div class="btn-comment" ng-show="coms.show">
-                <button class="btn btn-success btn-sm" ng-click="commentCtrl.editComment(coms)">Edit</button>
-                <button class="btn btn-danger btn-sm" ng-click="commentCtrl.deleteComment(coms)">Delete</button>
-            </div>
-        </blockquote>
-    </div>
+            </blockquote>
+        </div>
 
     <div class="container" id="preview" ng-show="commentForm.$dirty">
-            <h3>Preview</h3>
-            <p>{{commentCtrl.comment.text}}</p>
-            <p><strong>By: </strong>{{commentCtrl.comment.name}}</p>
-            <p><strong>Email: </strong>{{commentCtrl.comment.email}}</p>
+        <h3>Preview</h3>
+        <p>{{commentCtrl.comment.text}}</p>
+        <p><strong>By: </strong>{{commentCtrl.comment.name}}</p>
+        <p><strong>Email: </strong>{{commentCtrl.comment.email}}</p>
     </div>
 
-    <form name="commentForm" ng-submit="commentForm.$valid && commentCtrl.addComment()"
-          class="form-horizontal text-area" role="form" novalidate>
-    <div class="form-group" id="form">
-        <textarea ng-model="commentCtrl.comment.text" placeholder="Please leave a comment..."
-                  class="form-control" rows="7" id="comment" required></textarea>
-    </div>
-    <div class="form-group">
+    <form name="commentForm" ng-submit="commentForm.$valid && commentCtrl.addComment()" class="form-horizontal text-area" role="form" novalidate>
+        <div class="form-group" id="form">
+            <textarea ng-model="commentCtrl.comment.text" placeholder="Please leave a comment..." class="form-control" rows="7" id="comment" required></textarea>
+        </div>
+        <div class="form-group">
             <label class="control-label col-sm-2">Name:</label>
             <div class="col-sm-10">
                 <input type="author" ng-model="commentCtrl.comment.name" class="form-control" placeholder="Enter your name.." required>
             </div>
-    </div>
+        </div>
         <div class="form-group">
             <label class="control-label col-sm-2">Email:</label>
             <div class="col-sm-10">
                 <input type="email" ng-model="commentCtrl.comment.email" class="form-control" placeholder="ahmed.onawale@andela.co" required>
             </div>
         </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </div>
-    </div>
-
     </form>
     </div>
-    </div>
+</div>
 </body>
 </html>
