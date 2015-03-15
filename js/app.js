@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var app = angular.module('CommentsApp', []);
 app.controller('CommentsController', function(){
     this.comments = [];
@@ -26,3 +27,6 @@ app.controller('CommentsController', function(){
             ++com.downvote;
     };
 });
+=======
+angular.module('CommentsApp', ['ngMaterial', 'CommentsModule', 'CommentForm', 'PostBody']);
+>>>>>>> master
