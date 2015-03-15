@@ -1,0 +1,49 @@
+.ng-invalid.ng-dirty{
+    border-color: red;
+}
+.ng-valid.ng-dirty{
+    border-color: green;
+}
+#post-body{
+    width: 700px;
+}
+#post-body-inner{
+    padding: 20px;
+}
+#btn-comment{
+    float: right;
+}
+#form{
+    margin-left: 215px;
+    margin-bottom: 30px;
+    width: 700px;
+}
+#text-area{
+    width: 700px;
+    margin: 0 0 0 30px;
+}
+.block-text{
+    font-size: 14px
+}
+.heading{
+    padding-left: 20px;
+    margin-bottom: 30px
+}
+#sub-heading{
+    margin: 0 20px 0 60px;
+}
+.block-comments{
+    width: 800px;
+    padding: 10px 20px 0 20px;
+    margin: 10px 0 0 165px;
+}
+.comments{
+    width: 700px;
+    padding: 10px;
+    font-size: 16px;
+    display: block;
+}
+.btnsave{
+    margin: -25px 20px 0 0;
+    float: right;
+}
