@@ -3,47 +3,42 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Blog comments</title>
-
-    <link type="text/css" rel="stylesheet" href="js/vendor/angular-material/angular-material.css"/>
-    <link type="text/css" rel="stylesheet" href="js/vendor/bootstrap/dist/css/bootstrap.min.css"/>
-    <link type="text/css" rel="stylesheet" href="js/vendor/css/stylesheet.css"/>
-
+    <link type="text/css" rel="stylesheet" href="assets/vendor/angular-material/angular-material.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/stylesheet.css"/>
 </head>
 <body ng-controller="CommentsController as commentCtrl">
+<div >
 <md-toolbar class="md-tall md-primary heading">
-    <h1>
-        <span id="heading">Blog Comments</span>
-    </h1>
-    <p id="sub-heading">Blog comments app built with Angular JS, designed with Bootstrap, Angular JS material design & icons</p>
+    <h1><span id="heading">Blog Comments</span></h1>
+    <p id="sub-heading">Blog comments app built with Angular JS, designed with Angular JS material design & material design icons</p>
 </md-toolbar>
-<div id="body" class="container">
+</div>
+<div class="container">
    <blog-post></blog-post>
-   <div layout="column" layout-fill>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <span>Comments</span>
-            </div>
-        </md-toolbar>
-    </div>
+        <div layout="column">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <span>Comments</span>
+                </div>
+            </md-toolbar>
+        </div>
 
-    <div ng-controller="CommentsController as commentCtrl">
+        <div layout="row"><comment-list></comment-list></div>
+        <div id="form"><comment-form></comment-form></div>
 
-    <div layout="row"><comment-list></comment-list></div>
-    <div id="form"><comment-form></comment-form></div>
 </div>
 
-<script src="js/vendor/angular/angular.js"></script>
-<script src="js/vendor/angular-animate/angular-animate.js"></script>
-<script src="js/vendor/angular-aria/angular-aria.js"></script>
-<script src="js/vendor/angular-material/angular-material.js"></script>
-<script src="js/vendor/angular-mocks/angular-mocks.js"></script>
-<script src="js/app.js"></script>
-<script src="js/comments/module/commentsModule.js"></script>
-<script src="js/comments/controllers/commentsController.js"></script>
-<script src="js/comments/services/commentService.js"></script>
-<script src="js/comments/directives/commentList.js"></script>
-<script src="js/form/directives/commentForm.js"></script>
-<script src="js/post/directives/blogPost.js"></script>
-</div>
+<script src="assets/vendor/angular/angular.js"></script>
+<script src="assets/vendor/angular-animate/angular-animate.js"></script>
+<script src="assets/vendor/angular-aria/angular-aria.js"></script>
+<script src="assets/vendor/angular-material/angular-material.js"></script>
+<script src="assets/vendor/angular-mocks/angular-mocks.js"></script>
+<script src="app/js/app.js"></script>
+<script src="app/js/comments/module/commentsModule.js"></script>
+<script src="app/js/comments/controllers/commentsController.js"></script>
+<script src="app/js/comments/services/commentService.js"></script>
+<script src="app/js/comments/directives/commentList.js"></script>
+<script src="app/js/form/directives/commentForm.js"></script>
+<script src="app/js/post/directives/blogPost.js"></script>
 </body>
 </html>
