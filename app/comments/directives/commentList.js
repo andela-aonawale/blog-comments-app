@@ -5,6 +5,6 @@ angular.module('CommentsModule')
 .directive('commentList', [function(){
     return{
         restrict: 'E',
-        templateUrl: './app/js/comments/partials/comment-list.html'
+        templateUrl: './app/comments/partials/comment-list.html'
     };
 }]);

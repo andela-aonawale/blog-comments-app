@@ -5,6 +5,6 @@ angular.module('CommentForm', [])
     .directive('commentForm', function(){
         return {
             restrict: 'E',
-            templateUrl: './app/js/form/partials/comment-form.html'
+            templateUrl: './app/form/partials/comment-form.html'
         };
     });

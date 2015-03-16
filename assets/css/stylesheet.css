@@ -1,9 +1,3 @@
-.ng-invalid.ng-dirty{
-    border-color: #ff0b39;
-}
-.ng-valid.ng-dirty{
-    border-color: green;
-}
 
 .badge {
     display: inline-block;
@@ -156,7 +150,7 @@ p {
     height: 30px;
 }
 .thumbs-edit:hover{
-    color: rgb(63,81,181);
+    color: #00796B;
 }
 .delete:hover{
     color: red;

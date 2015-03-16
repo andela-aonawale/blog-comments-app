@@ -5,6 +5,6 @@ angular.module('PostBody', []).
     directive('blogPost', function(){
         return{
             restrict: 'E',
-            templateUrl: './app/js/post/partials/post-body.html'
+            templateUrl: './app/post/partials/post-body.html'
         };
     });
